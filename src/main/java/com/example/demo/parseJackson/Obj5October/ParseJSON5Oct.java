@@ -30,7 +30,7 @@ public class ParseJSON5Oct {
                 if (JsonToken.FIELD_NAME.equals(jsonToken1)) {
                     String fieldName = parser.getCurrentName(); // получить название поля
 
-                    // System.out.println(fieldName);
+                    System.out.println(fieldName);
                     jsonToken2 = parser.nextToken(); // переходим на содержание этого поля
 
                     if (fieldName.equals("friend_addr")) { //если название поля такое, то след значение пустота.(по условию структуры нашего JSON)
@@ -39,9 +39,9 @@ public class ParseJSON5Oct {
                         parser.nextToken();//переходим на значяение этого поля
                         valueStreet = parser.getValueAsString();//получаем значение этого поля
                         log.info("------ check street");
-//                        System.out.println(fieldName);
-//                        System.out.println(street);
-//                        System.out.println(valueStreet);
+                        System.out.println(fieldName);
+                        System.out.println(street);
+                        System.out.println(valueStreet);
                     }
                 }
 

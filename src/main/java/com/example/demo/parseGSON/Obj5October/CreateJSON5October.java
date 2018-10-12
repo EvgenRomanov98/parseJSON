@@ -45,7 +45,8 @@ public class CreateJSON5October {
 
     @GetMapping("/5oct")
     public Object createJSON() {
-        //1 объект с вложеным адресом и френд фдресом
+        //создаем JSON объекты и JSON массивы и просто влаживаем их друг в друга соглассно примеру JSONa
+        //1 объект с вложеным адресом и френд адресом
         JsonObject generalObject = new JsonObject();
 
         generalObject.addProperty("empID", "100");
