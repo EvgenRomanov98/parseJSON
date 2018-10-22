@@ -2,7 +2,8 @@ package com.example.demo.parseJackson.universalParceJackson;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import jdk.nashorn.internal.ir.ObjectNode;
+
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -41,22 +42,20 @@ public class UniversalParseJackson {
         LinkedHashMap mapJson = mapper.readValue(json, new TypeReference<LinkedHashMap>() {
         });
 
-        ArrayList<String> innerObjectName = new ArrayList<>(serviceUniversalParserJackson.writeInMapSimpleFieldsOfTheMainObject(generalMap, mapper, mapJson));
+        serviceUniversalParserJackson.writeInMapSimpleFieldsOfTheMainObject(generalMap, mapper, mapJson);
 
-        innerObjectName.forEach(name->{
-            String nameInnerObjectAccordingToConvention = name + ".";//добавляем точку, чтобы получилась запись соглассно конвенции. (пример:data.settings...)
-            serviceUniversalParserJackson.writeInMapSimpleFieldsOfTheMainObject(nameInnerObjectAccordingToConvention,generalMap,mapper, (LinkedHashMap) mapJson.get(name));
-        });
+//        innerObjectName.forEach(name -> {
+//            String nameInnerObjectAccordingToConvention = name + ".";//добавляем точку, чтобы получилась запись соглассно конвенции. (пример:data.settings...)
+//            serviceUniversalParserJackson.writeInMapSimpleFieldsOfTheMainObject(nameInnerObjectAccordingToConvention, generalMap, mapper, (LinkedHashMap) mapJson.get(name));
+//        });
 
-
-//        System.out.println(mapJson.toString());
         return generalMap;
     }
 
 
     @GetMapping("/universal/creator")
-    public ObjectNode createJson(){
-        return serviceUniversalCreatorJsonJackson.createJson(generalMap);
+    public ObjectNode createJson() {
+        return serviceUniversalCreatorJsonJackson.createJson();
     }
 }
 

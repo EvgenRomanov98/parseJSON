@@ -16,30 +16,27 @@ import java.util.regex.Pattern;
 public class ServiceUniversalParserJackson {
 
 //    String exampleJson = "{\n" +
-//            "  \"token\":\"\",\n" +
-//            "  \"int\": 123,\n" +
-//            "  \"inqt\": 1233.123,\n" +
-//            "  \"array\": [\n" +
-//            "    \"sdff\",\n" +
-//            "    2\n" +
+//            "  \"token1\":\"token1\",\n" +
+//            "  \"int1\": 1231,\n" +
+//            "  \"inqt1\": 1233.1231,\n" +
+//            "  \"array1\": [\n" +
+//            "    \"sdff1\",\n" +
+//            "    21\n" +
 //            "  ],\n" +
-//            "  \"request_id\": \"simple_request\",\n" +
+//            "  \"request_id1\": \"simple_request1\",\n" +
 //            "  \"data2\": {\n" +
 //            "    \"token2\": \"token_boken2\",\n" +
 //            "    \"int2\": 1232,\n" +
 //            "    \"array2\": [\n" +
-//            "      1,\n" +
+//            "      12,\n" +
 //            "      22\n" +
 //            "    ],\n" +
 //            "    \"settings3\": {\n" +
 //            "      \"token3\": \"token_boken3\",\n" +
 //            "      \"int3\": 1233,\n" +
 //            "      \"array3\": [\n" +
-//            "      \t{\n" +
-//            "      \t\"desktop_id5\": \"abc1234hj5\",\n" +
-//            "      \"process_id5\": \"java_proc5\",\n" +
-//            "      \"class_id5\": \"4255\"\t\n" +
-//            "      \t},23\n" +
+//            "      23,\n" +
+//            "      33\n" +
 //            "      ],\n" +
 //            "      \"desktop_id3\": \"abc1234hj3\",\n" +
 //            "      \"process_id3\": \"java_proc3\",\n" +
@@ -52,30 +49,30 @@ public class ServiceUniversalParserJackson {
 //            "    }\n" +
 //            "  },\n" +
 //            "  \"data5\": {\n" +
-//            "    \"settings5\": {\n" +
-//            "      \"desktop_id5\": \"abc1234hj5\",\n" +
-//            "      \"process_id5\": \"java_proc5\",\n" +
-//            "      \"class_id5\": \"4255\",\n" +
+//            "    \"settings6\": {\n" +
+//            "      \"desktop_id6\": \"abc1234hj6\",\n" +
+//            "      \"process_id6\": \"java_proc6\",\n" +
+//            "      \"class_id6\": \"4256\",\n" +
 //            "      \"settings7\": {\n" +
 //            "      \t\"settings8\": {\n" +
-//            "        \"desktop_id5\": \"abc1234hj5\",\n" +
-//            "        \"process_id5\": \"java_proc5\",\n" +
-//            "        \"class_id5\": \"4255\"\n" +
+//            "        \"desktop_id9\": \"abc1234hj9\",\n" +
+//            "        \"process_id9\": \"java_proc9\",\n" +
+//            "        \"class_id9\": \"4259\"\n" +
 //            "      },\n" +
-//            "        \"desktop_id5\": \"abc1234hj5\",\n" +
-//            "        \"process_id5\": \"java_proc5\",\n" +
-//            "        \"class_id5\": \"4255\"\n" +
+//            "        \"desktop_id7\": \"abc1234hj7\",\n" +
+//            "        \"process_id7\": \"java_proc7\",\n" +
+//            "        \"class_id7\": \"4257\"\n" +
 //            "      },\n" +
-//            "      \"settings6\": {\n" +
-//            "        \"desktop_id6\": \"abc1234hj6\",\n" +
-//            "        \"process_i6\": \"java_proc6\",\n" +
-//            "        \"class_id6\": \"4256\"\n" +
+//            "      \"settings10\": {\n" +
+//            "        \"desktop_id10\": \"abc1234hj10\",\n" +
+//            "        \"process_i10\": \"java_proc10\",\n" +
+//            "        \"class_id10\": \"42510\"\n" +
 //            "      }\n" +
 //            "    }\n" +
 //            "  }\n" +
 //            "}";
 
-    public List<String> writeInMapSimpleFieldsOfTheMainObject(Map<String, String> generalMap, ObjectMapper mapper, LinkedHashMap mapJson) {
+    public void writeInMapSimpleFieldsOfTheMainObject(Map<String, String> generalMap, ObjectMapper mapper, LinkedHashMap mapJson) {
 //        ArrayList<String> arrayOfInnerObjectNames = new ArrayList<>();
 //        Iterator<Map.Entry<String, String>> iterator = mapJson.entrySet().iterator();//берем итератор с коллекции
 //        while (iterator.hasNext()) {
@@ -107,11 +104,11 @@ public class ServiceUniversalParserJackson {
 //            }
 //        }
         String nameWithoutInnerObjectInJson = "";
-        return writeInMapSimpleFieldsOfTheMainObject(nameWithoutInnerObjectInJson, generalMap, mapper, mapJson);
+        writeInMapSimpleFieldsOfTheMainObject(nameWithoutInnerObjectInJson, generalMap, mapper, mapJson);
     }
 
 
-    public List<String> writeInMapSimpleFieldsOfTheMainObject(String name, Map<String, String> generalMap, ObjectMapper mapper, LinkedHashMap mapJson) {
+    public void writeInMapSimpleFieldsOfTheMainObject(String name, Map<String, String> generalMap, ObjectMapper mapper, LinkedHashMap mapJson) {
         ArrayList<String> arrayOfInnerObjectNames = new ArrayList<>();
         Iterator<Map.Entry<String, String>> iterator = mapJson.entrySet().iterator();//берем итератор с коллекции
         while (iterator.hasNext()) {
@@ -142,7 +139,6 @@ public class ServiceUniversalParserJackson {
                 e.printStackTrace();
             }
         }
-        return arrayOfInnerObjectNames;
     }
 
     private boolean checkFieldEmpty(Map<String, String> generalMap, String value, String key) {
